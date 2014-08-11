@@ -7,7 +7,7 @@ problems with the input.
 
 For use in testing answers to
 
-LINK TO BE ADDED ONCE QUESTION IS POSTED
+http://codegolf.stackexchange.com/questions/36034/how-many-trees-in-the-alphabet-forest
 '''
 
 import string
@@ -86,10 +86,10 @@ def verify(source):
             grumbles += 'PROBLEM: more than 79 lines.\n'
             break
         length = len(line)
-        if length > 78:     # length excludes newline
+        if length > 79:     # length excludes newline
             grumbles += ('PROBLEM: more than 79 characters in line {}'
                          .format(line_count) +
-                         ' (including newline).\n'
+                         ' (excluding newline).\n'
                          )
         invalid_characters = set(line) - VALID_CHARACTERS
         if invalid_characters:
