@@ -100,8 +100,6 @@ def verify(source):
                 grumbles += invalid_characters.pop()
             grumbles += '\n'
         lines.append(line)
-##    present_letters = ''.join(''.join(line.split()) for line in lines)
-##    represented_letters = set(present_letters)
     nodes = set()
     for line_number in range(len(lines)):
         line = lines[line_number]
@@ -123,10 +121,12 @@ def verify(source):
     
 def home_tree(node, nodes):
     current_tree = {node}
+    boundary = current_tree
     while True:
-        expanded_tree = tree_expansion(current_tree, nodes)
+        expanded_tree = tree_expansion(boundary, nodes) | current_tree
         if len(expanded_tree) == len(current_tree):
             break
+        boundary = expanded_tree - current_tree
         current_tree = expanded_tree
     return current_tree
 
